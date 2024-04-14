@@ -2,7 +2,7 @@
 const Register = () => {
   return (
 	<>
-  <div className="font-[sans-serif] text-[#333] bg-white flex items-center justify-center md:h-screen p-4">
+  <div className="font-[sans-serif] text-[#333] bg-white flex items-center justify-center md:h-screen p-2 -mt-10">
       <div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl rounded-md p-6">
         <a href="javascript:void(0)"><img
           src="/src/assets/BMSlogo.png" alt="logo" className='w-40 md:mb-4 mb-12' />

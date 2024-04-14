@@ -4,13 +4,16 @@ import Card from "./components/card/Card"
 const Home = () => {
   return (
 <Layout>
-    <div className="flex flex-wrap justify-center mt-6 space-x-5">
+    <div className="flex flex-wrap justify-center mt-6 space-x-10">
     <Card/>
     <Card/>
     <Card/>
     <Card/>
     <Card/>
     <Card/>
+    <Card/>
+    <Card/>
+
     </div>
     
 </Layout>

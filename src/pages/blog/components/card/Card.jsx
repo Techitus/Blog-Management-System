@@ -2,7 +2,7 @@
 const Card = () => {
   return (
     <>
-    <div className=" mb-4 max-w-sm rounded overflow-hidden shadow-lg">
+    <div className="  max-w-sm rounded overflow-hidden shadow-lg mb-10 space-x-10">
   <img className="w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSQKaS7LP80SEcKgz9-d_ORjkh1B9hPSUqkeI_mLSnDg&s" alt="Sunset in the mountains"/>
   <div className="px-6 py-4">
     <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
