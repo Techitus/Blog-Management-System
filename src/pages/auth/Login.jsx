@@ -11,7 +11,7 @@ const Login = () => {
         data
       );
       if (response.status === 200) {
-        navigate("/register");
+        navigate("/");
       }
     } catch (error) {
       alert(error?.response?.data?.message);
