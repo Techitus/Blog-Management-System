@@ -37,7 +37,7 @@ const Form = ({type, onSubmit}) => {
           <form onSubmit={handleSubmit} className="max-w-md w-full mx-auto">
             <div className="mb-12">
               <h3 className="text-4xl font-extrabold text-blue-600">{
-                type === "Login" ? "Login here to continue" : "Register here to continue.."
+                type === "Login" ? "Welcome Back! Login Here..." : "Welcome! Register Here..."
               }
 
               </h3>
@@ -46,7 +46,7 @@ const Form = ({type, onSubmit}) => {
                {
                 type === "Register" && (
               <div className="relative flex items-center">
-                <input onChange={handleChange} name="username" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none" placeholder="Enter your Name"  />
+                <input onChange={handleChange} name="username" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none" placeholder="Enter  Name"  />
             
               </div> )
 }
@@ -83,16 +83,27 @@ const Form = ({type, onSubmit}) => {
                   Remember me
                 </label>
               </div>
+              { type === 'Login' && (
               <div>
-                <a href="" className="text-blue-600 text-sm hover:underline">
+                <Link  to='/register' className="text-blue-600 text-sm hover:underline">
                   Forgot Password?
-                </a>
+                </Link>
               </div>
+             ) }
             </div>
             <div className="mt-12">
+              { type === 'Login' && (
               <button type="submit" className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                 Sign in
-              </button>
+              </button>) 
+}
+{ type === 'Register' && (
+              <button type="submit" className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                Sign up
+              </button>) 
+}
+
+
              {
               type === "Login" &&(
               <p  className="text-sm text-center mt-8"> Do not Have Account? <Link to="/register"  className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register Here</Link></p>

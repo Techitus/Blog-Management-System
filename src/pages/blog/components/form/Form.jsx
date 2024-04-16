@@ -1,33 +1,39 @@
 
 // eslint-disable-next-line react/prop-types
 const Form = ({type}) => {
+  // eslint-disable-next-line no-undef
+  
+    
   return (
 <>
 <form>
-  <div className="  md:px-20 pt-6">
-    <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
-      <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">{type}</h1>
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="title" className="text-lx font-serif">Title:</label>
-          <input type="text" placeholder="title" id="title" className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md" />
+<div className="max-w-2xl mx-auto p-4 bg-[#f2f2f2]">
+    <form action="/submit-post" method="POST">
+      <h2 className="text-center text-4xl mt-5 font-bold">{type}</h2> <br />
+        <div className="mb-6">
+            <label htmlFor="title" className="block text-lg font-medium text-gray-800 mb-1">Title</label>
+            <input type="text" id="title" name="title" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" required/>
         </div>
-        <div>
-          <label htmlFor="description" className="block mb-2 text-lg font-serif">Description:</label>
-          <textarea id="description" cols="30" rows="10" placeholder="whrite here.." className="w-full font-serif  p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
+
+        <div className="mb-6">
+            <label htmlFor="content" className="block text-lg font-medium text-gray-800 mb-1">Content</label>
+            <textarea id="content" name="content" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" rows="6" required></textarea>
         </div>
-        <div>
-          <label htmlFor="name" className="text-lx font-serif">Name:</label>
-          <input type="text" placeholder="name" id="name" className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md" />
+
+        <div className="mb-6">
+            <label htmlFor="image" className="block text-lg font-medium text-gray-800 mb-1">Image</label>
+            <input type="file" id="image" name="image" accept="image/*" className="w-full"/>
         </div>
-        <div>
-          <label htmlFor="email" className="text-lx font-serif">Email:</label>
-          <input type="text" placeholder="name" id="email" className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md" />
+
+        <div className="flex justify-end">
+            <button type="submit" className="px-6 py-2 bg-indigo-500 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none">Submit</button>
         </div>
-        <button className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">Send</button>
-      </div>
-    </div>
-  </div>
+    </form>
+</div>
+<script>
+    
+</script>
+
 </form>
  </>
   )
