@@ -1,4 +1,5 @@
 import Form from "./components/Form/Form";
+import Swal from 'sweetalert2'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";                                                                                                 
 import { baseUrl } from "../../config";
@@ -16,10 +17,19 @@ const Login = () => {
         navigate("/");
       }
       else{
-        alert('Login failed')
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Incorrect Password!",
+        });
       }
     } catch (error) {
-      alert(error?.response?.data?.message);
+      // alert(error?.response?.data?.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Incorrect Password!",
+      });
     }
   };
   return (

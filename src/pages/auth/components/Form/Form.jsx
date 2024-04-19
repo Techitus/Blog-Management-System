@@ -47,6 +47,7 @@ const Form = ({type, onSubmit}) => {
                 type === "Register" && (
               <div className="relative flex items-center">
                 <input onChange={handleChange} name="username" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none" placeholder="Enter  Name"  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 48 48"><g fill="none" stroke="gray" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4"><circle cx="24" cy="11" r="7"/><path d="M4 41c0-8.837 8.059-16 18-16m9 17l10-10l-4-4l-10 10v4z"/></g></svg>
             
               </div> )
 }

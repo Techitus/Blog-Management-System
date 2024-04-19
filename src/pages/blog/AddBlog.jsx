@@ -7,7 +7,7 @@ const AddBlog = () => {
   const navigate = useNavigate()
   const handleCreateBlog = async (data) => {
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         `${baseUrl}/blog`,
         data,{
 headers : {

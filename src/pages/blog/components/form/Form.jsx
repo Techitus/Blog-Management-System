@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 // eslint-disable-next-line react/prop-types
-const Form = ({type}) => {
+const Form = ({type, onSubmit}) => {
   // eslint-disable-next-line no-undef
   const [data,setdata] = useState({
 title : '',
@@ -34,11 +34,11 @@ const handleSubmit = (e) => {
             <input type="text" id="title" name="title" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" onChange={handleChange} required/>
         </div>
 <div className="mb-6">
-            <label htmlFor="subtitle" className="block text-lg font-medium text-gray-800 mb-1">Title</label>
+            <label htmlFor="subtitle" className="block text-lg font-medium text-gray-800 mb-1">Subtitle</label>
             <input type="text" id="subtitle" name="subtitle" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" onChange={handleChange} required/>
         </div>
         <div className="mb-6">
-            <label htmlFor="catagory" className="block text-lg font-medium text-gray-800 mb-1">Title</label>
+            <label htmlFor="catagory" className="block text-lg font-medium text-gray-800 mb-1">Catagory</label>
             <input type="text" id="catagory" name="catagory" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"onChange={handleChange} required/>
         </div>
         <div className="mb-6">
