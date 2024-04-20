@@ -19,6 +19,10 @@ headers : {
       if (response.status === 201) {
    navigate("/");
       }
+      else
+      {
+        alert("Something went wrong")
+      }
     } catch (error) {
       alert(error?.response?.data?.message);
     }
@@ -29,7 +33,7 @@ headers : {
    
     <>
       <Layout>
-<Form type="Add Post" onSubmit = {handleCreateBlog}/>
+<Form type="Add Blog" onSubmit = {handleCreateBlog}/>
       </Layout>
     </>
   );

@@ -22,12 +22,11 @@ const handleSubmit = (e) => {
     // eslint-disable-next-line no-undef
     onSubmit(data)  
 }
-    console.log(data)
   return (
 <>
-<form>
+<form onSubmit={handleSubmit}>
 <div className="max-w-2xl mx-auto p-4 bg-[#f2f2f2]">
-    <form action="" onSubmit={handleSubmit} method="">
+   
       <h2 className="text-center text-4xl mt-5 font-bold">{type}</h2> <br />
         <div className="mb-6">
             <label htmlFor="title" className="block text-lg font-medium text-gray-800 mb-1">Title</label>
@@ -38,8 +37,8 @@ const handleSubmit = (e) => {
             <input type="text" id="subtitle" name="subtitle" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" onChange={handleChange} required/>
         </div>
         <div className="mb-6">
-            <label htmlFor="catagory" className="block text-lg font-medium text-gray-800 mb-1">Catagory</label>
-            <input type="text" id="catagory" name="catagory" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"onChange={handleChange} required/>
+            <label htmlFor="category" className="block text-lg font-medium text-gray-800 mb-1">Category</label>
+            <input type="text" id="category" name="category" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"onChange={handleChange} required/>
         </div>
         <div className="mb-6">
             <label htmlFor="description" className="block text-lg font-medium text-gray-800 mb-1">Description</label>
@@ -54,11 +53,7 @@ const handleSubmit = (e) => {
         <div className="flex justify-end">
             <button type="submit" className="px-6 py-2 bg-indigo-500 text-white font-semibold rounded-md hover:bg-indigo-600 focus:outline-none">Submit</button>
         </div>
-    </form>
 </div>
-<script>
-    
-</script>
 
 </form>
  </>
