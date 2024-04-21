@@ -1,35 +1,60 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Layout from "../../components/layout/Layout"
+import axios from "axios"
+import { baseUrl } from "../../config"
+import { useEffect, useState } from "react"
 
 const SingleBlog = () => {
+    const {id} = useParams()
+        const [blog, setBlog] = useState({})
+const navigate = useNavigate()
+    const deleteBlog =async ()=>{
+      const response = await   axios.delete(`${baseUrl}/blog/${id}`)
+      if(response.status === 200){
+        navigate('/blog')
+      }
+
+      }
+    
+  const fetchBlog = async ()=>{
+  const response =  await axios.get(`${baseUrl}/blog/${id}`,{
+    headers:{
+        'Authorization' : localStorage.getItem('token')
+    }
+  })
+if(response.status === 200){
+  setBlog(response.data.data)
+}  }
+
+  useEffect(()=>{
+fetchBlog()
+  },[])
+
   return (
    <Layout>
     <div className="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
 
 <div className="mb-10 rounded overflow-hidden flex flex-col mx-auto">
     <a href="#"
-        className="text-xl sm:text-4xl font-semibold  hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
-        Best Activewear from the Nordstrom Anniversary Sale</a>
+        className="text-xl sm:text-4xl font-semibold  hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">{blog?.title}</a>
 
     <div className="relative">
         <a href="#">
             <img className="w-full"
-                src="https://images.pexels.com/photos/5120892/pexels-photo-5120892.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=625.0&amp;sharp=10&amp;w=1500"
+                src={blog?.imageUrl}
                 alt="Sunset in the mountains"/>
         </a>
         <a href="#!"
             className="hidden  z-10 text-xs absolute bottom-0 left-0 bg-indigo-600 px-6 m-2 py-2 text-white hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out sm:flex items-center"><span
                 className="text-lg">|</span>&nbsp;&nbsp;<Link to="/blog/edit">Edit</Link></a>
 
-        <a href="#!"
+        <a onClick={deleteBlog} href="#!"
             className="hidden  z-10 text-xs absolute bottom-0 right-0 bg-red-800 px-6 m-2 py-2 text-white hover:bg-white hover:text-red-400 transition duration-500 ease-in-out sm:flex items-center"><span
                 className="text-lg">|</span>&nbsp;&nbsp;<span>Delete</span></a>
 
     </div>
     <p className="text-gray-700 py-5 text-base leading-8">
-        Machu Picchu is a 15th-century Inca citadel situated on a mountain ridge 2,430 metres (7,970 ft) above sea
-        level. It is located in the Cusco Region, Urubamba Province, Machupicchu District in Peru, above the Sacred
-        Valley, which is 80 kilometres (50 mi) northwest of Cuzco and through which the Urubamba River flows.
+      {blog?.description}
     </p>
     <div className="py-5 text-sm font-regular text-gray-900 flex">
         <span className="mr-3 flex flex-row items-center">
@@ -45,7 +70,7 @@ const SingleBlog = () => {
                     </g>
                 </g>
             </svg>
-            <span className="ml-1">6 mins ago</span></span>
+            <span className="ml-1">{blog.subtitle}</span></span>
         <a href="#" className="flex flex-row items-center hover:text-indigo-600">
             <svg className="text-indigo-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
                 focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +79,7 @@ const SingleBlog = () => {
                 </path>
                 <path d="M0 0h24v24H0z" fill="none"></path>
             </svg>
-            <span className="ml-1">AliSher Azimi</span></a>
+            <span className="ml-1"></span></a>
     </div>
     <hr/>
 

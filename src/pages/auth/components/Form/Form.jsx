@@ -22,6 +22,8 @@ const Form = ({type, onSubmit}) => {
     onSubmit(data)
   }
 
+  
+
   return (
 <>
 
