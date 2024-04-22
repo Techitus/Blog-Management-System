@@ -18,7 +18,7 @@ fetchBlogs()
 <Layout>
     <div className="flex flex-wrap justify-center mt-6 space-x-10  " key={blogs.id}>
       {
-        blogs.length > 0 && blogs.map ((blog)=>{
+        blogs.length > 0 && blogs.map((blog)=>{
           return (
           <Card key={blog.id} blog={blog}/>
 

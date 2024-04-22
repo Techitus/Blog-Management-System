@@ -8,20 +8,28 @@ const SingleBlog = () => {
     const {id} = useParams()
         const [blog, setBlog] = useState({})
 const navigate = useNavigate()
+
     const deleteBlog =async ()=>{
-      const response = await   axios.delete(`${baseUrl}/blog/${id}`)
+        try{
+      const response = await   axios.delete(`${baseUrl}/blog/${id}`,{
+        headers : {
+          "Authorization ": localStorage.getItem('token')
+        }
+      })
       if(response.status === 200){
-        navigate('/blog')
+        navigate('/')
+      } else{
+        alert('Something went wrong')
       }
+    }catch(error) {
+        alert(error?.response?.data?.message)
+    }
 
       }
     
   const fetchBlog = async ()=>{
-  const response =  await axios.get(`${baseUrl}/blog/${id}`,{
-    headers:{
-        'Authorization' : localStorage.getItem('token')
-    }
-  })
+  const response =  await axios.get(`${baseUrl}/blog/${id}`
+  )
 if(response.status === 200){
   setBlog(response.data.data)
 }  }
@@ -32,60 +40,40 @@ fetchBlog()
 
   return (
    <Layout>
-    <div className="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
+<div className="mt-20 bg-gray-100 flex flex-col justify-center">
+  <div className="relative m-3 flex flex-wrap mx-auto justify-center">
+                        <div className="min-w-[340px]flex flex-col group">
+                            <div
+                                className="h-48 md:h-56 lg:h-[24rem] w-full bg-red-500 border-2 border-white flex items-center justify-center text-white text-base mb-3 md:mb-5 overflow-hidden relative">
 
-<div className="mb-10 rounded overflow-hidden flex flex-col mx-auto">
-    <a href="#"
-        className="text-xl sm:text-4xl font-semibold  hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">{blog?.title}</a>
+                                <img src={blog?.imageUrl}
+                                    className="object-cover w-full h-full scale-100 group-hover:scale-110 transition-all duration-400"
+                                    alt=""/>
 
-    <div className="relative">
-        <a href="#">
-            <img className="w-full"
-                src={blog?.imageUrl}
-                alt="Sunset in the mountains"/>
-        </a>
-        <a href="#!"
-            className="hidden  z-10 text-xs absolute bottom-0 left-0 bg-indigo-600 px-6 m-2 py-2 text-white hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out sm:flex items-center"><span
-                className="text-lg">|</span>&nbsp;&nbsp;<Link to="/blog/edit">Edit</Link></a>
+                                <div
+                                    className="absolute z-10 border-4 border-primary w-[95%] h-[95%] invisible group-hover:visible opacity-0 group-hover:opacity-100 group-hover:scale-90 transition-all duration-500">
+                                </div>
 
-        <a onClick={deleteBlog} href="#!"
-            className="hidden  z-10 text-xs absolute bottom-0 right-0 bg-red-800 px-6 m-2 py-2 text-white hover:bg-white hover:text-red-400 transition duration-500 ease-in-out sm:flex items-center"><span
-                className="text-lg">|</span>&nbsp;&nbsp;<span>Delete</span></a>
+                            </div>
+                            <a href="#"
+                                className=" block text-black text-center hover:text-primary transition-colors duration-150 text-lg md:text-xl mb-1">
+                                {blog?.title}</a>
 
+
+                            <p className="mb-4 font-light  text-sm md:text-sm text-center text-gray-400">{blog?.description}</p>
+
+                            <div className="flex justify-center gap-x-3">
+                                <Link to="/blog/edit"
+                                    className=" px-5 py-2 border border-primary text-primary hover:bg-primary  transition-all outline-none bg-black border-black text-white hover:text-black hover:bg-white font-bold">
+                                    Edit</Link>
+                                <button onClick={deleteBlog}
+                                    className="px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all outline-none bg-white border-black text-black hover:text-white hover:bg-black font-bold">
+                                    Delete</button>
+                            </div>
+
+                        </div>
+  </div>
     </div>
-    <p className="text-gray-700 py-5 text-base leading-8">
-      {blog?.description}
-    </p>
-    <div className="py-5 text-sm font-regular text-gray-900 flex">
-        <span className="mr-3 flex flex-row items-center">
-            <svg className="text-indigo-600" fill="currentColor" height="13px" width="13px" version="1.1" id="Layer_1"
-                // eslint-disable-next-line react/no-unknown-property
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 512 512"  xmlSpace="preserve">
-                <g>
-                    <g>
-                        <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
-        c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
-        c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path>
-                    </g>
-                </g>
-            </svg>
-            <span className="ml-1">{blog.subtitle}</span></span>
-        <a href="#" className="flex flex-row items-center hover:text-indigo-600">
-            <svg className="text-indigo-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
-                focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor"
-                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-                </path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-            <span className="ml-1"></span></a>
-    </div>
-    <hr/>
-
-</div>
-
-</div>
    </Layout>
   )
 }
