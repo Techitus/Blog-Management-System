@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Layout from "../../components/layout/Layout"
 import axios from "axios"
@@ -63,12 +64,15 @@ fetchBlog()
                             <p className="mb-4 font-light  text-sm md:text-sm text-center text-gray-400">{blog?.description}</p>
 
                             <div className="flex justify-center gap-x-3">
-                                <Link to="/blog/edit"
+                                <Link to={ `/blog/edit/${blog._id}`}
                                     className=" px-5 py-2 border border-primary text-primary hover:bg-primary  transition-all outline-none bg-black border-black text-white hover:text-black hover:bg-white font-bold">
                                     Edit</Link>
                                 <button onClick={deleteBlog}
-                                    className="px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all outline-none bg-white border-black text-black hover:text-white hover:bg-black font-bold">
+                                    className="px-5 py-2 border border-primary text-primary hover:bg-primary  transition-all outline-none bg-white border-black text-black hover:text-white hover:bg-black font-bold">
                                     Delete</button>
+                            </div> <br />
+                            <div>
+                                <p>Created By:{blog?.userId?.username}</p>
                             </div>
 
                         </div>
